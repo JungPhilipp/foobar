@@ -19,7 +19,6 @@ def solution(s):
     # Brute force solution
     count = len(s)
     assert count > 0
-    pieces = 0
     for length in range(1, count/2 + 1):
         if count % length != 0:
             continue
@@ -30,19 +29,19 @@ def solution(s):
 
 
 def test_example1():
-    input = "abcabcabcabc"
-    assert solution(input) == 4
+    s = "abcabcabcabc"
+    assert solution(s) == 4
 
 
 def test_example2():
-    input = "abccbaabccba"
-    assert solution(input) == 2
+    s = "abccbaabccba"
+    assert solution(s) == 2
 
 def test_same_character():
-    input = "xxxxxxxxxx"
-    assert solution(input) == len(input)
+    s = "xxxxxxxxxx"
+    assert solution(s) == len(s)
 
-def test_example1():
-    input = "cabcabcabcab"
-    assert solution(input) == 4
+def test_example1_rotated():
+    s = "cabcabcabcab"
+    assert solution(s) == 4
 
