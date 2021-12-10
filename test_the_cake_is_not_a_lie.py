@@ -4,8 +4,9 @@ from __future__ import print_function
 import numpy as np
 
 def validate(s, length):
-    for cut_start in range(length):
-        copy = np.roll(np.array(list(s)), cut_start)
+    copy = np.array(list(s))
+    for _ in range(length):
+        np.roll(copy, 1)
         valid = True
         for cut in range(0, len(s), length):
             if (copy[0:length] != copy[cut:cut + length]).any():
@@ -25,7 +26,7 @@ def solution(s):
         if validate(s, length):
             return count / length
 
-    return -1
+    return 1
 
 
 def test_example1():
@@ -37,11 +38,17 @@ def test_example2():
     s = "abccbaabccba"
     assert solution(s) == 2
 
+
 def test_same_character():
     s = "xxxxxxxxxx"
     assert solution(s) == len(s)
+
 
 def test_example1_rotated():
     s = "cabcabcabcab"
     assert solution(s) == 4
 
+
+def test_one_piece():
+    s = "xlajdfjadsfiajdfa"
+    assert solution(s) == 1
